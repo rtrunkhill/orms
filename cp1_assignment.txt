@@ -2,15 +2,56 @@ For each of these skills, write pseudo-code (like the post = Post.all.first exam
 For each code sample, also write a corresponding SQL statement. 
 
 1.remove duplicates in a query response
+    User.select(:name).distinct
+    
+    SELECT DISTINCT name
+    FROM users;
 
 2.filter records using inequalities, pattern matching, ranges, and boolean logic
+    User.where(id >= 100)
+    
+    SELECT id
+    FROM users
+    WHERE id >=100;
+    
+    User(name).where(is_home = true)
+    
+    SELECT *
+    FROM users
+    WHERE is_home = true;
 
 3.sort records in a particular order
+    User.order('name DESC)
+    
+    SELECT *
+    FROM users
+    ORDER BY name DESC;
 
 4.limit the number of records returned
+    User.limit(10)
+    
+    SELECT *
+    FROM users
+    LIMIT 10;
 
 5.group records into sections
+    User.group(:name)
+    
+    SELECT *
+    FROM users
+    GROUP BY name;
 
 6.perform calculations using aggregate functions
+    User.sum('age')
+    
+    SELECT SUM(age)
+    FROM users;
 
 7.join tables using cross join, inner join, and outer join
+    User.join(:posts)
+    
+    SELECT *
+    FROM users
+    INNER JOIN posts
+    ON posts.userid = users.id;
+    
